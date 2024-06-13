@@ -1,0 +1,33 @@
+{
+  "name": "@ssts/color",
+  "description": "Create random colors: RGB, HEX or HSL.",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "homepage": "https://github.com/Senior-Sedo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Senior-Sedo/seniorCOLOR.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [
+    "random",
+    "color",
+    "background-color",
+    "random-color",
+    "random-background-color"
+  ],
+  "author": "Senior Sedo",
+  "license": "MIT",
+  "devDependencies": {
+    "tsup": "^8.1.0",
+    "typescript": "^5.4.5"
+  }
+}
