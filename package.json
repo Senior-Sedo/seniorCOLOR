@@ -8,7 +8,7 @@
   "homepage": "https://github.com/Senior-Sedo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Senior-Sedo/seniorCOLOR.git"
+    "url": "git+https://github.com/Senior-Sedo/seniorCOLOR.git"
   },
   "publishConfig": {
     "access": "public",
