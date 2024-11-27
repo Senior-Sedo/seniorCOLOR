@@ -5,9 +5,9 @@ import seniorINT from "@ssts/int";
  * @param {number} method - "RGB", "HEX" or "HSL". Default is "HEX"
  * @param {number} opacity - Must be between 0 and 1
  * @returns {string} color
- * @throws Error if the method is not one of these values "RGB" | "HEX" | "HSL"
- * @throws Error if the opacity is NaN
- * @throws Error if the opacity is less than 0 or greater than 1
+ * @throws TypeError if the method is not one of these values "RGB" | "HEX" | "HSL"
+ * @throws TypeError if the opacity is NaN
+ * @throws RangeError if the opacity is less than 0 or greater than 1
  * 
  * @example
  * import randomColor from "@ssts/color";
@@ -18,8 +18,8 @@ import seniorINT from "@ssts/int";
  */
 const seniorCOLOR = (method: "RGB" | "HEX" | "HSL" = "HEX", opacity?: number): string => {
   if (opacity != undefined) {
-    if (typeof opacity !== "number") throw new TypeError("Opacity must be a number");
-    else if (opacity < 0 || opacity > 1) throw new RangeError("Opacity must be between 0 and 1");
+    if (typeof opacity !== "number") throw new TypeError("opacity must be a number");
+    else if (opacity < 0 || opacity > 1) throw new RangeError(`Invalid opacity value: ${opacity}. Must be between 0 and 1`);
   }
 
   let color: string = "";
