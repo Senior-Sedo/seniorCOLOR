@@ -18,8 +18,8 @@ import seniorINT from "@ssts/int";
  */
 const seniorCOLOR = (method: "RGB" | "HEX" | "HSL" = "HEX", opacity?: number): string => {
   if (opacity != undefined) {
-    if (typeof opacity !== "number") throw new Error("Opacity must be a number");
-    else if (opacity < 0 || opacity > 1) throw new Error("Opacity must be between 0 and 1");
+    if (typeof opacity !== "number") throw new TypeError("Opacity must be a number");
+    else if (opacity < 0 || opacity > 1) throw new RangeError("Opacity must be between 0 and 1");
   }
 
   let color: string = "";
@@ -41,7 +41,7 @@ const seniorCOLOR = (method: "RGB" | "HEX" | "HSL" = "HEX", opacity?: number): s
       break;
     default:
       console.warn("Please use a valid method");
-      throw new Error(`Invalid method: "${method}". Please use RGB, HEX or HSL`);
+      throw new TypeError(`Invalid method: "${method}". Please use RGB, HEX or HSL`);
   }
   return color;
 };

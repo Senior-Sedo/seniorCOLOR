@@ -18,11 +18,18 @@
     "build": "tsup"
   },
   "keywords": [
+    "create",
+    "generate",
     "random",
     "color",
     "background-color",
     "random-color",
-    "random-background-color"
+    "random-background-color",
+    "create-random-color",
+    "create-random-background-color",
+    "generate-random-color",
+    "generate-random-background-color",
+    "randomColor"
   ],
   "author": "Senior Sedo",
   "license": "MIT",
