@@ -1,25 +1,62 @@
-const s = (m: number): number => Math.floor(Math.random() * (m + 1));
+import seniorINT from "@ssts/int";
 
-const seniorCOLOR = (method: "RGB" | "HEX" | "HSL" = "HEX"): string => {
-  let c: string = "";
+/**
+ * Generates a random color and returns it.
+ * @param {number} method - "RGB", "HEX" or "HSL". Default is "HEX"
+ * @param {number} opacity - Must be between 0 and 1
+ * @returns {string} color
+ * @throws Error if the method is not one of these values "RGB" | "HEX" | "HSL"
+ * @throws Error if the opacity is NaN
+ * @throws Error if the opacity is less than 0 or greater than 1
+ * 
+ * @example
+ * import randomColor from "@ssts/color";
+ * const color = randomColor();
+ * 
+ * console.log(color);
+ * // Log example: '#25ECAD'
+ */
+const seniorCOLOR = (method: "RGB" | "HEX" | "HSL" = "HEX", opacity?: number): string => {
+  if (opacity != undefined) {
+    if (typeof opacity !== "number") throw new Error("Opacity must be a number");
+    else if (opacity < 0 || opacity > 1) throw new Error("Opacity must be between 0 and 1");
+  }
+
+  let color: string = "";
   switch (method.toLowerCase()) {
     case "hex":
-      c += "#";
+      color += "#";
       for (let i = 0; i < 6; i++) {        
-        c += "ABCDEF0123456"[s(12)];
+        color += "ABCDEF0123456"[seniorINT(0, 12)];
+      }
+      if (opacity != undefined) {
+        color += Math.round(opacity * 255).toString(16).padStart(2, "0").toUpperCase();
       }
       break;
     case "rgb":
-      c = `rgb(${s(255)}, ${s(255)}, ${s(255)})`;
+      color = opacity == undefined ? `rgb(${seniorINT(0, 255)}, ${seniorINT(0, 255)}, ${seniorINT(0, 255)})` : `rgba(${seniorINT(0, 255)}, ${seniorINT(0, 255)}, ${seniorINT(0, 255)}, ${opacity})`;
       break;
     case "hsl":
-      c = `hsl(${s(360)}, 100%, 50%)`;
+      color = opacity == undefined ? `hsl(${seniorINT(0, 360)}, 100%, 50%)` : `hsla(${seniorINT(0, 360)}, 100%, 50%, ${opacity})`;
       break;
     default:
-      console.error("Please use a valid color value method");
-      break;
+      console.warn("Please use a valid method");
+      throw new Error(`Invalid method: "${method}". Please use RGB, HEX or HSL`);
   }
-  return c;
+  return color;
 };
+
+declare global {
+  interface Window {
+    ssts: {
+      seniorCOLOR?: typeof seniorCOLOR;
+    };
+  }
+}
+
+if (window != undefined) {
+  window.ssts = {};
+  window.ssts.seniorCOLOR = seniorCOLOR;
+}
 
 export default seniorCOLOR;

@@ -29,5 +29,8 @@
   "devDependencies": {
     "tsup": "^8.1.0",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@ssts/int": "^0.0.3"
   }
 }
