@@ -48,15 +48,12 @@ const seniorCOLOR = (method: "RGB" | "HEX" | "HSL" = "HEX", opacity?: number): s
 
 declare global {
   interface Window {
-    ssts: {
-      seniorCOLOR?: typeof seniorCOLOR;
-    };
+    ssts: any;
   }
 }
-
-if (window != undefined) {
-  window.ssts = {};
+if (typeof window !== "undefined") {
+  if (typeof window.ssts !== "object") window.ssts = {};
   window.ssts.seniorCOLOR = seniorCOLOR;
-}
+};
 
 export default seniorCOLOR;

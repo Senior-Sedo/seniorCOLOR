@@ -38,6 +38,6 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@ssts/int": "^0.0.3"
+    "@ssts/int": "^2.0.0"
   }
 }
